@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/site.min.css" />
+    <link rel="stylesheet" href="http://cdn.wijmo.com/5.20171.300/styles/wijmo.min.css" />
+    <script src="http://cdn.wijmo.com/5.20171.300/controls/wijmo.min.js"></script>
+    <script src="http://cdn.wijmo.com/5.20171.300/controls/wijmo.input.min.js"></script>
+    <script src="http://cdn.wijmo.com/5.20171.300/controls/wijmo.grid.min.js"></script>
+    <script src="http://cdn.wijmo.com/5.20171.300/controls/wijmo.grid.filter.min.js"></script>
+    <script src="http://cdn.wijmo.com/5.20171.300/controls/wijmo.olap.min.js"></script>
+</head>
+<body>
+<div class="container body-content">
+    <div class="row">
+        <div class="col-sm-3">
+            <div id="pivotPanel">
+            </div>
+        </div>
+        <div class="col-sm-9">
+            <div id="pivotGrid">
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    var panel = new wijmo.olap.PivotPanel("#pivotPanel");
+    var grid = new wijmo.olap.PivotGrid("#pivotGrid");
+    var engine = new wijmo.olap.PivotEngine();
+    engine.itemsSource = "http://localhost:11111/api/dataengine/cube";
+    engine.rowFields.push(new wijmo.olap.CubePivotField(engine, "[Customer].[Country]", "Country"));
+    engine.columnFields.push(new wijmo.olap.CubePivotField(engine, "[Customer].[Occupation]", "Occupation"));
+    engine.valueFields.push(new wijmo.olap.CubePivotField(engine, "[Measures].[Customer Count]", "Customer Count"));
+    panel.engine = engine;
+    grid.itemsSource = panel;
+</script>
+</body>
+</html>
