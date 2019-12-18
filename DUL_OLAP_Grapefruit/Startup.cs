@@ -52,10 +52,10 @@ namespace DUL_OLAP_Grapefruit
                 app.UseHsts();
             }
 
-
+            var winAuth = @"Data Source=WHOAMI;Initial Catalog=AdventureWorksDW2014Multidimensional-EE;";
             app.UseDataEngineProviders().AddCube(
                 "cube",
-                @"your db conn string with specified catalog",
+                winAuth,
                 "Adventure Works"
             );
            
