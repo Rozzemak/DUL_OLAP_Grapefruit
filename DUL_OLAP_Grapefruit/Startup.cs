@@ -52,7 +52,7 @@ namespace DUL_OLAP_Grapefruit
                 app.UseHsts();
             }
 
-            var winAuth = @"Data Source=DESKTOP-KI8D0JV;Initial Catalog=AdventureWorksDW2014Multidimensional-EE;";
+            var winAuth = @"Data Source=DESKTOP-KI8D0JV; Initial Catalog=AdventureWorksDW2014Multidimensional-EE;";
             app.UseDataEngineProviders().AddCube(
                 "cube",
                 winAuth,
