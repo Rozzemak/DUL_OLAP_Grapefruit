@@ -52,6 +52,8 @@ namespace DUL_OLAP_Grapefruit
                 app.UseHsts();
             }
 
+
+            // Database engine has to be analitics service, which is not included in express mssql.
             var winAuth = @"Data Source=WHOAMI;Initial Catalog=AdventureWorksDW2014Multidimensional-EE;";
             app.UseDataEngineProviders().AddCube(
                 "cube",
